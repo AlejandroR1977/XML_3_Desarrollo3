@@ -8,15 +8,13 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class SAX {
-
-    public class Sales extends DefaultHandler {
+    public class SAX extends DefaultHandler {
 
         private SAXParser pars = null;
         private SAXParserFactory SaxParsFact;
         private double TSales;
         private boolean ISales;
-        private static final String ClassName = Sales.class.getName();
+        private static final String ClassName = SAX.class.getName();
         private final static Logger Log = Logger.getLogger(ClassName);
         private String Element;
         private String ID;
@@ -31,7 +29,7 @@ public class SAX {
         
         public static void main(String[] args) {
         if (args.length == 0) {
-            Log.severe("No file to process. Usage is:" + "\njava DeptSalesReport <keyword>");
+            Log.severe("No se ha encontrado el archivo. Esta en uso:" + "\njava Reporte de ventas por Dept <Key>");
             return;
         }
         File xmlFile = new File(args[0]);
@@ -39,7 +37,7 @@ public class SAX {
         handler.Check(xmlFile);
     }
 
-        public Sales() {
+        public SAX() {
             super();
             SaxParsFact.setNamespaceAware(true);
             SaxParsFact.setValidating(true);
@@ -143,6 +141,5 @@ public class SAX {
     private void Print() {
         System.out.printf("%4.4s %-10.10s %-10.10s %9.9s %-10.10s %-15.15s\n",
                 ID, Name, LName, Sales, State, Dept);
-    }
     }
 }
